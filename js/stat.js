@@ -8,7 +8,7 @@ const BAR_WIDTH = 40;
 const GAP = 10;
 const FONT_GAP = 15;
 const TEXT_WIDTH = 50;
-const barHeight = CLOUD_HEIGHT - GAP * GAP;
+const barHeight = CLOUD_HEIGHT - 150;
 
 const renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -53,6 +53,12 @@ window.renderStatistics = function (ctx, players, times) {
     if (players[i] === `Вы`) {
       ctx.fillStyle = `red`;
     }
+    ctx.fillText(
+        Math.round(times[i]),
+        CLOUD_X + FONT_GAP + GAP + (TEXT_WIDTH + BAR_WIDTH) * i,
+        (-((barHeight * times[i]) / maxTime)) + CLOUD_HEIGHT - GAP * 3
+    );
+
     ctx.fillText(
         players[i],
         CLOUD_X + GAP + FONT_GAP + (TEXT_WIDTH + BAR_WIDTH) * i,
